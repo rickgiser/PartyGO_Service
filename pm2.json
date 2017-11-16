@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "PartyGO_Service",
+    "script": "production.js",
+    "cwd": "F:\GitHubWorks\PartyGO_Service\PartyGO_Service",
+    "exec_mode": "fork",
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}
