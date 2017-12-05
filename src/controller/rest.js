@@ -12,7 +12,8 @@ module.exports = class extends think.Controller {
     assert(think.isFunction(this.model), 'this.model must be a function');
     this.modelInstance = this.model(this.resource);
   }
-  __before() {}
+  __before() {
+  }
   /**
    * get resource
    * @return {String} [resource name]

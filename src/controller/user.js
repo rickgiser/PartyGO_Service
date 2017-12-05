@@ -2,7 +2,12 @@ const BaseRest = require('./rest.js');
 
 module.exports = class extends BaseRest {
 
+    
     async postAction() {
+        this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
+        this.header("Access-Control-Allow-Headers", "x-requested-with");
+        this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE");
+        this.header("Access-Control-Allow-Credentials", "true");
         let username = this.post('username');//获取用户名给username变量
         let password = this.post('password');
         console.log(username);
