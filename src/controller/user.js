@@ -2,12 +2,26 @@ const BaseRest = require('./rest.js');
 
 module.exports = class extends BaseRest {
 
-    
-    async postAction() {
-        this.header("Access-Control-Allow-Origin", this.header("origin") || "*");
+    async getAction() {
+        let username = this.get('username');//获取用户名给username变量
+        let password = this.get('password');
+        this.header("Access-Control-Allow-Origin", "*");
         this.header("Access-Control-Allow-Headers", "x-requested-with");
         this.header("Access-Control-Request-Method", "GET,POST,PUT,DELETE");
         this.header("Access-Control-Allow-Credentials", "true");
+        let data;
+        data = await this.modelInstance.addUser({username:username,password:password});
+        console.log(data);
+        var info = await this.modelInstance.checkPassword(username, password);
+        if(think.isEmpty(data)){
+            return this.fail('注册失败~');
+        }else if(data.type === 'exist'){
+            return this.fail('用户名重名');
+        }else{
+            return this.success(info);
+        }
+      }
+    async postAction() {
         let username = this.post('username');//获取用户名给username变量
         let password = this.post('password');
         console.log(username);
