@@ -1,5 +1,4 @@
 const path = require('path');
-const JWTSession = require('think-session-jwt');
 const isDev = think.env === 'development';
 
 module.exports = [
@@ -32,18 +31,6 @@ module.exports = [
     {
         handle: 'router',
         options: {}
-    },
-    {
-        handle: JWTSession,
-        secret: 'secret',  // secret is reqired
-        tokenType: 'cookie', // ['query', 'body', 'header', 'cookie'], 'cookie' is default
-        tokenName: 'jwt', // if tokenType not 'cookie', this will be token name, 'jwt' is default
-        sign: {
-            // sign options is not required
-        },
-        verify: {
-            // verify options is not required
-        }
     },
     'logic',
     'controller'
